@@ -13,7 +13,7 @@
             </div>
         </div>
         <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-pagination"></div> -->
         
         <!-- 如果需要导航按钮 -->
         <!-- <div class="swiper-button-prev"></div>
@@ -41,42 +41,15 @@ export default {
         el:'.swiper-pagination',
       },
 
-      // on:{
-      //   init:function(swiper){
-      //         slide=this.slides.eq(0);
-      //       slide.addClass('ani-slide');
-      //     },
-      //   transitionStart: function(){
-      //       for(i=0;i<this.slides.length;i++){
-      //         slide=this.slides.eq(i);
-      //           slide.removeClass('ani-slide');
-      //     }
-      //     },
-      //   transitionEnd: function(){
-      //     slide=this.slides.eq(this.activeIndex);
-      //       slide.addClass('ani-slide');
-          
-      //     },
-      // }
     });
 
-    // new Swiper ('.swiper-container', {
-    //   loop: true,
-    //   // 如果需要分页器
-    //   pagination: '.swiper-pagination',
-    //   // 如果需要前进后退按钮
-    //   nextButton: '.swiper-button-next',
-    //   prevButton: '.swiper-button-prev',
-    //   // 如果需要滚动条
-    //   scrollbar: '.swiper-scrollbar',
-    // })        
   }  
 }
 </script>
 
 <style lang="scss" scoped>
 ._index{
-  height: 100%;
+  height: 100vh;
   .swiper-container {
     width: 100%;
     height: 100%;

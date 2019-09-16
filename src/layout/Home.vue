@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <div class="header" :style="{ background: isBg }">
+    <!-- <div class="header" :style="{ background: isBg }"> -->
+    <div class="header">
       <div class="_container header_box flex_box_between">
         <div class="logo">
           <router-link to="/index">FOSSATI</router-link>
@@ -17,13 +18,10 @@
           </div>
           <ul class="flex_box">
             <li class="nav_list">
-              <span class="nav_list_a _cursor"><router-link to="/about">导航一</router-link></span>
+              <span class="nav_list_a _cursor"><router-link to="/brand">品牌故事</router-link></span>
             </li>
             <li class="nav_list">
-              <span class="nav_list_a _cursor"><router-link to="/about">导航二</router-link></span>
-            </li>
-            <li class="nav_list">
-              <span class="nav_list_a _cursor">导航列表</span>
+              <span class="nav_list_a _cursor">产品</span>
               <div class="nav_sub_box">
                 <div class="_container _border"></div>
                 <div class="_container">
@@ -35,6 +33,18 @@
                   </div>
                 </div>
               </div>
+            </li>
+            <li class="nav_list">
+              <span class="nav_list_a _cursor"><router-link to="/about">新品</router-link></span>
+            </li>
+            <li class="nav_list">
+              <span class="nav_list_a _cursor"><router-link to="/project">项目</router-link></span>
+            </li>
+            <li class="nav_list">
+              <span class="nav_list_a _cursor"><router-link to="/about">旗舰店</router-link></span>
+            </li>
+            <li class="nav_list">
+              <span class="nav_list_a _cursor"><router-link to="/about">新闻</router-link></span>
             </li>
           </ul>
         </div>
@@ -71,12 +81,27 @@
 
     </div>
 
-    <div class="content">
+    <div class="content" @touchmove.prevent>
       <router-view></router-view>
     </div>
 
     <div class="footer"> 
-
+      <div class="linkBox flex_box_between">
+        <div class="_cursor">
+          <i class="iconfont icon-weibo"></i>
+        </div>
+        <div class="_cursor">
+          <i class="iconfont icon-weixin"></i>
+        </div>
+        <div class="_cursor">
+          <i class="iconfont icon-instagram"></i>
+        </div>
+      </div>
+  		<div class="connectInfo">
+  			<span>地址：福建省福州市仓山区XXXXXXXXXXXXXX</span>
+  			<span>电话：10086</span>
+  			<span>邮箱：134234123@qq.com</span>
+  		</div>     
     </div>
 
 
@@ -139,11 +164,11 @@ export default {
       //滚动条距离页面顶部的距离
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop //原生兼容
       // console.log(scrollTop) 
-      if(scrollTop>200){
-        this.isBg = 'rgba(32, 34, 43, 0.9)'
-      }else{
-        this.isBg = 'none'
-      }
+      // if(scrollTop>200){
+      //   this.isBg = 'rgba(32, 34, 43, 0.9)'
+      // }else{
+      //   this.isBg = 'none'
+      // }
     },       
   },
 
@@ -168,15 +193,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home::-webkit-scrollbar {display:none}
+.home{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .header{
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 70px;
+  height: 90px;
   color: #fff;
   transition:all .5s ease 0s;
+  background: rgba(32, 34, 43, 0.9);
   a{
     color: #fff;
   }
@@ -188,11 +220,12 @@ export default {
     height: 100%;
     // border: 1px solid red;
     .logo{
-      font-size: 30px;
+      font-size: 40px;
       font-weight: bold;
     }
     .nav_box{
       height: 100%;
+      font-size: 16px;
       .more_menu{
         transition:all .3s ease 0s;
         opacity: 0;
@@ -210,7 +243,7 @@ export default {
         height: 100%;
         .nav_list{
           height: 100%;
-          line-height: 70px;
+          line-height: 90px;
           margin-right: 24px;
           &:last-child{
             margin-right: 0;
@@ -289,12 +322,28 @@ export default {
 }
 
 .content{
-  height: 100vh;
+  // height: 100vh;
 }
 
 .footer{
-  height: 1176px;
+  height: 176px;
+  padding: 30px 0 50px;
   background: #000;
+  color: #fff;
+  .linkBox{
+    width: 240px;
+    margin: 0 auto;
+    .iconfont{
+      font-size: 30px;
+    }
+  }
+  .connectInfo{
+    margin-top: 44px;
+    text-align: center;
+    span{
+      padding:0 40px;
+    }
+  }
 }
 
 @keyframes aTop{
