@@ -16,28 +16,28 @@
         </div>
       </section>
       <div class="projectTitle">
-        {{item.name}}
+        {{item.title}}
       </div>
       <div class="detail">
         <el-row>
           <el-col :span="12">
-            <p class="detailtext">
-              {{item.context}}
+            <p class="detailtext" v-html="item.content">
+              {{item.content}}
             </p>
           </el-col>
           <el-col :span="10" :offset="2">
             <ul class="info">
               <li>
-                <div>时间</div>
+                <div>类别</div>
+                <div>{{item.type}}</div>
+              </li>
+              <li>
+                <div>发布者</div>
+                <div>{{item.publisher}}</div>
+              </li>
+              <li>
+                <div>发布时间</div>
                 <div>{{handleUnixToDate(item.createtime*1000,true)}}</div>
-              </li>
-              <li>
-                <div>作者</div>
-                <div>{{item.people}}</div>
-              </li>
-              <li>
-                <div>地址</div>
-                <div>{{item.address}}</div>
               </li>
             </ul>
           </el-col>
@@ -68,7 +68,7 @@ export default {
       return UnixToDate(data1,data2)
     },
     handleGetDate(){
-      this.$axios.get(`${this.baseUrl}/out/project`).then(res=>{
+      this.$axios.get(`${this.baseUrl}/out/news`).then(res=>{
         this.dataArr = res.data.data
         this.initSwiper()
       })
@@ -125,12 +125,12 @@ export default {
 			text-align: center;
 		}
 
-		.detailtext{
+		.detail >>> .detailtext{
 			line-height: 30px;
 			text-indent: 2em;
 			text-align: justify;
 		}
-		.detailtext::first-letter{
+		.detail >>> .detailtext::first-letter{
 			font-size: 80px;
 		}
 

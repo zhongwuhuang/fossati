@@ -24,15 +24,35 @@ export default new Router({
           component: () => import('@/views/Brand.vue')
         },
         {
+          path: '/product',
+          name: '产品',
+          component: () => import('@/views/Product.vue')
+        },
+        {
+          path: '/nProduct',
+          name: '新品',
+          component: () => import('@/views/nProduct.vue')
+        },
+        {
+          path: '/detail',
+          name: '详情',
+          component: () => import('@/views/Detail.vue')
+        },
+        {
           path: '/project',
           name: '项目',
           component: () => import('@/views/Project.vue')
         },
         {
-          path: '/about',
-          name: '首页',
-          component: () => import('@/views/About.vue')
+          path: '/shop',
+          name: '旗舰店',
+          component: () => import('@/views/Shop.vue')
         },
+        {
+          path: '/news',
+          name: '新闻',
+          component: () => import('@/views/News.vue')
+        }
       ]
     }
   ]

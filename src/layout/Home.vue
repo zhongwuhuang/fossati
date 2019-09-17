@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <!-- <div class="header" :style="{ background: isBg }"> -->
-    <div class="header">
+    <div class="header" :style="{ background: isBg }">
+    <!-- <div class="header"> -->
       <div class="_container header_box flex_box_between">
         <div class="logo">
           <router-link to="/index">FOSSATI</router-link>
@@ -26,25 +26,24 @@
                 <div class="_container _border"></div>
                 <div class="_container">
                   <div class="nav_sub_list">
-                    <div class="item">导航一1</div>
-                    <div class="item">导航一2</div>
-                    <div class="item">导航一3</div>
-                    <div class="item">导航一4</div>
+                    <div class="item" v-for="(item,index) in cateArr" :key="index">
+                      <router-link :to="'/product?proCategoryId='+item.id">{{item.nickname}}</router-link>
+                    </div>
                   </div>
                 </div>
               </div>
             </li>
             <li class="nav_list">
-              <span class="nav_list_a _cursor"><router-link to="/about">新品</router-link></span>
+              <span class="nav_list_a _cursor"><router-link to="/nProduct">新品</router-link></span>
             </li>
             <li class="nav_list">
               <span class="nav_list_a _cursor"><router-link to="/project">项目</router-link></span>
             </li>
             <li class="nav_list">
-              <span class="nav_list_a _cursor"><router-link to="/about">旗舰店</router-link></span>
+              <span class="nav_list_a _cursor"><router-link to="/shop">旗舰店</router-link></span>
             </li>
             <li class="nav_list">
-              <span class="nav_list_a _cursor"><router-link to="/about">新闻</router-link></span>
+              <span class="nav_list_a _cursor"><router-link to="/news">新闻</router-link></span>
             </li>
           </ul>
         </div>
@@ -57,24 +56,30 @@
           <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
-            background-color="#545c64"
+            background-color="rgba(32, 34, 43, 0.9)"
             text-color="#fff"
             active-text-color="#ffd04b">
               <el-menu-item index="1">
-                <router-link to="/about">导航一</router-link>
+                <router-link to="/brand">品牌故事</router-link>
               </el-menu-item>
               <el-submenu index="2">
-                <template slot="title">导航列表</template>
-                <el-menu-item index="2-1"><router-link to="/about">导航一</router-link></el-menu-item>
-                <el-menu-item index="2-2"><router-link to="/about">导航一</router-link></el-menu-item>
-                <el-menu-item index="2-3"><router-link to="/about">导航一</router-link></el-menu-item>
+                <template slot="title">产品</template>
+                <el-menu-item v-for="(item,index) in cateArr" :key="index" :index="'2-'+index">
+                  <router-link :to="'/product?proCategoryId='+item.id">{{item.nickname}}</router-link>
+                </el-menu-item>
               </el-submenu>
-              <el-submenu index="3">
-                <template slot="title">导航列表</template>
-                <el-menu-item index="3-1"><router-link to="/about">导航一</router-link></el-menu-item>
-                <el-menu-item index="3-2"><router-link to="/about">导航一</router-link></el-menu-item>
-                <el-menu-item index="3-3"><router-link to="/about">导航一</router-link></el-menu-item>
-              </el-submenu>
+              <el-menu-item index="3">
+                <router-link to="/nProduct">新品</router-link>
+              </el-menu-item>
+              <el-menu-item index="4">
+                <router-link to="/project">项目</router-link>
+              </el-menu-item>
+              <el-menu-item index="5">
+                <router-link to="/shop">旗舰店</router-link>
+              </el-menu-item>
+              <el-menu-item index="6">
+                <router-link to="/news">新闻</router-link>
+              </el-menu-item>
           </el-menu>
         </div>
       </transition>
@@ -115,6 +120,7 @@
 </template>
 
 <script>
+import {filterCate} from '@/utils/utils'
 
 export default {
   name: 'home',
@@ -127,18 +133,22 @@ export default {
       screenWidth:'',
       
       isBg:'none',
-      btnFlag:false
+      btnFlag:false,
+
+      cateArr:[]
     }
   },
   created() {
-    
+    this.$axios.get(`${this.baseUrl}/out/category`).then(res=>{
+      const data = res.data.data
+      this.cateArr = data.filter(filterCate)
+    })    
   },
   methods: {
     handleShowSmallNav(){
       this.smallNav = !this.smallNav
       this.isShowSmallNav = !this.isShowSmallNav
     },
-
     scrollToTop () {
       const that = this
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -164,11 +174,11 @@ export default {
       //滚动条距离页面顶部的距离
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop //原生兼容
       // console.log(scrollTop) 
-      // if(scrollTop>200){
-      //   this.isBg = 'rgba(32, 34, 43, 0.9)'
-      // }else{
-      //   this.isBg = 'none'
-      // }
+      if(scrollTop>200){
+        this.isBg = 'rgba(32, 34, 43, 0.9)'
+      }else{
+        this.isBg = 'none'
+      }
     },       
   },
 
@@ -205,10 +215,10 @@ export default {
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 90px;
+  height: 70px;
   color: #fff;
   transition:all .5s ease 0s;
-  background: rgba(32, 34, 43, 0.9);
+  // background: rgba(32, 34, 43, 0.9);
   a{
     color: #fff;
   }
@@ -243,7 +253,7 @@ export default {
         height: 100%;
         .nav_list{
           height: 100%;
-          line-height: 90px;
+          line-height: 70px;
           margin-right: 24px;
           &:last-child{
             margin-right: 0;
@@ -279,13 +289,14 @@ export default {
             .nav_sub_list{
               height: 122px;
               line-height: 1;
-              column-count:6;
+              // column-count:6;
               column-gap:50px;          
-              border: 1px solid #fff;
+              // border: 1px solid #fff;
               width: 800px;    
               overflow: hidden;
               .item{
                 display: inline-block;
+                width: 33.3%;
                 line-height: 30px;
                 cursor: pointer;
               }
@@ -382,6 +393,9 @@ export default {
 
 
 @media (max-width: 768px){
+  .header{
+    background: rgba(32, 34, 43, 0.9)!important;
+  }  
   .nav_box .flex_box {
     display: none;
   }
