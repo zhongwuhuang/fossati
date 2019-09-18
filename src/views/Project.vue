@@ -29,7 +29,8 @@
             <ul class="info">
               <li>
                 <div>时间</div>
-                <div>{{handleUnixToDate(item.createtime*1000,true)}}</div>
+                <!-- <div>{{handleUnixToDate(item.createtime*1000,true)}}</div> -->
+                <div>{{item.casedate}}</div>
               </li>
               <li>
                 <div>作者</div>

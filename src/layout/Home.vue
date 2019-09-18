@@ -21,7 +21,7 @@
               <span class="nav_list_a _cursor"><router-link to="/brand">品牌故事</router-link></span>
             </li>
             <li class="nav_list">
-              <span class="nav_list_a _cursor">产品</span>
+              <span @mouseover="handleHover" class="nav_list_a _cursor">产品</span>
               <div class="nav_sub_box">
                 <div class="_container _border"></div>
                 <div class="_container">
@@ -60,25 +60,25 @@
             text-color="#fff"
             active-text-color="#ffd04b">
               <el-menu-item index="1">
-                <router-link to="/brand">品牌故事</router-link>
+                <router-link @click.native="handleShowSmallNav" to="/brand">品牌故事</router-link>
               </el-menu-item>
               <el-submenu index="2">
                 <template slot="title">产品</template>
                 <el-menu-item v-for="(item,index) in cateArr" :key="index" :index="'2-'+index">
-                  <router-link :to="'/product?proCategoryId='+item.id">{{item.nickname}}</router-link>
+                  <router-link @click.native="handleShowSmallNav" :to="'/product?proCategoryId='+item.id">{{item.nickname}}</router-link>
                 </el-menu-item>
               </el-submenu>
               <el-menu-item index="3">
-                <router-link to="/nProduct">新品</router-link>
+                <router-link @click.native="handleShowSmallNav" to="/nProduct">新品</router-link>
               </el-menu-item>
               <el-menu-item index="4">
-                <router-link to="/project">项目</router-link>
+                <router-link @click.native="handleShowSmallNav" to="/project">项目</router-link>
               </el-menu-item>
               <el-menu-item index="5">
-                <router-link to="/shop">旗舰店</router-link>
+                <router-link @click.native="handleShowSmallNav" to="/shop">旗舰店</router-link>
               </el-menu-item>
               <el-menu-item index="6">
-                <router-link to="/news">新闻</router-link>
+                <router-link @click.native="handleShowSmallNav" to="/news">新闻</router-link>
               </el-menu-item>
           </el-menu>
         </div>
@@ -103,9 +103,9 @@
         </div>
       </div>
   		<div class="connectInfo">
-  			<span>地址：福建省福州市仓山区XXXXXXXXXXXXXX</span>
-  			<span>电话：10086</span>
-  			<span>邮箱：134234123@qq.com</span>
+  			<span>地址：上海市青浦区华丹路108号</span>
+  			<span>电话：13700275217</span>
+  			<span>邮箱：fossati1967@163.com</span>
   		</div>     
     </div>
 
@@ -145,6 +145,12 @@ export default {
     })    
   },
   methods: {
+    handleHover(){
+      this.isBg = 'rgba(32, 34, 43, 0.9)'
+    },
+    handleLeave(){
+      this.isBg = 'none'
+    },
     handleShowSmallNav(){
       this.smallNav = !this.smallNav
       this.isShowSmallNav = !this.isShowSmallNav
@@ -255,6 +261,9 @@ export default {
           height: 100%;
           line-height: 70px;
           margin-right: 24px;
+          .router-link-exact-active{
+            color:#989898;
+          }          
           &:last-child{
             margin-right: 0;
           }
