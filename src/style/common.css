@@ -102,3 +102,10 @@ li{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+/* 重写图片浏览样式 */
+.close-btn{
+  font-size: 50px!important;
+  cursor: pointer;
+  right: 20px!important;
+}

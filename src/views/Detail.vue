@@ -6,7 +6,8 @@
       <div class="swiper-container1" style="height: 100%;">
         <div class="swiper-wrapper" id="bigImg">
           <div class="swiper-slide" v-for="(item,index) in bigimages" :key="index">
-            <img :src="baseImgUrl+item">
+            <img v-gallery:group1 :src="baseImgUrl+item">
+            <!-- <img :src="baseImgUrl+item"> -->
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -31,7 +32,11 @@
             <div class="swiper-container" style="height:100%;text-align:center;">
               <div class="swiper-wrapper" id="smallImg">
                 <div class="swiper-slide" v-for="(item,index) in smallimages" :key="index">
-                  <img :src="baseImgUrl+item">
+                  <!-- <img :src="baseImgUrl+item"> -->
+                  <!-- 单图 -->
+                  <!-- <img v-gallery :src="baseImgUrl+item"> -->
+                  <!-- 单图 -->
+                  <img v-gallery:group2 :src="baseImgUrl+item">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -61,13 +66,12 @@ export default {
     this.baseImgUrl = this.imgUrl
     this.$axios.get(`${this.baseUrl}/out/product/id/${getUrlKey('productId')}`).then(res=>{
       const dataArr = res.data.data[0]
-      console.log(dataArr)
       this.content = dataArr.content
       this.smallimages = dataArr.smallimages.split(',')
       this.bigimages = dataArr.bigimages.split(',')
 
       this.$nextTick(()=>{
-        const swiper1 = new Swiper('.swiper-container1', {
+        new Swiper('.swiper-container1', {
           slidesPerView: 'auto',
           freeMode: true,
           spaceBetween: 30,
@@ -83,7 +87,7 @@ export default {
             prevEl: '.swiper-button-prev',
           }
         });
-        const swiper = new Swiper('.swiper-container', {
+        new Swiper('.swiper-container', {
           pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -118,6 +122,7 @@ export default {
   line-height: 30px;
   text-indent: 2em;
   text-align: justify;
+  color: #333;
 }
 .detailtext::first-letter{
   font-size: 80px;

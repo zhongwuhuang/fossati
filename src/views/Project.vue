@@ -5,7 +5,8 @@
         <div class="swiper-container" style="height: 100%;">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(imgItem,idx) in item.images.split(',')" :key="idx">
-              <img :src="baseImgUrl+imgItem">
+              <!-- <img :src="baseImgUrl+imgItem"> -->
+              <img v-gallery="item.id" :src="baseImgUrl+imgItem">
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -20,12 +21,12 @@
       </div>
       <div class="detail">
         <el-row>
-          <el-col :span="12">
+          <el-col :span="24" :sm="{span:12}">
             <p class="detailtext">
               {{item.context}}
             </p>
           </el-col>
-          <el-col :span="10" :offset="2">
+          <el-col :span="24" :sm="{span:10,offset:2}">
             <ul class="info">
               <li>
                 <div>时间</div>
@@ -76,7 +77,7 @@ export default {
     },
     initSwiper(){
       this.$nextTick(() => {
-        let swiper = new Swiper('.swiper-container',{
+        new Swiper('.swiper-container',{
           slidesPerView: 'auto',
           spaceBetween: 30,
           centeredSlides: true,
@@ -129,14 +130,16 @@ export default {
 		.detailtext{
 			line-height: 30px;
 			text-indent: 2em;
-			text-align: justify;
+      text-align: justify;
+      color: #333;
 		}
 		.detailtext::first-letter{
 			font-size: 80px;
 		}
 
 		.info {
-			margin-top: 18px
+      margin-top: 18px;
+      color: #666;
 		}
 		.info li{
 			list-style: none;
@@ -149,7 +152,7 @@ export default {
 			float: left;
     }  
     
-    		/* 索引 */
+    /* 索引 */
 		.detail .swiper-pagination-bullet {
 			width: 20px;
 			height: 20px;

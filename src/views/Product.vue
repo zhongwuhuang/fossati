@@ -12,7 +12,9 @@
           <el-row>
             <el-col class="imgbox" :span="12" :xs="24" :md="8" :lg="6" v-for="(item,index) in productArr" :key="index">
               <router-link :to="'/detail?productId='+item.id">
-                <img  class="img-responsive" :src="baseImgUrl+item.image" alt="chef">
+                <div class="imgdiv">
+                  <img  class="img-responsive" :src="baseImgUrl+item.image" alt="chef">
+                </div>
               </router-link>
               <h3>{{item.name}}</h3>
             </el-col>
@@ -38,7 +40,7 @@ export default {
     }
   },
   watch: {
-    '$route' (to, from) {
+    '$route' () {
       this.getCategoryData()
       this.getProductData()      
     }
@@ -92,28 +94,36 @@ export default {
   }
   h3{
     padding-top:20px;
+    color: #333;
   }
   .imgbox{
     margin-top:40px;
     a{
+      overflow: hidden;
       position: relative;
       display: block;
       height: 240px;
-      img{
+      .imgdiv{
+        overflow: hidden;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        max-height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
         display: inline-block;
+        img{
+          max-height: 100%;
+          transition: all 1.5s;
+          &:hover {
+            transform: scale(1.1);
+          }        
+        }
       }
     }
   }
   .noPro{
     padding: 30px;
-    color: #333;
+    color: #666;
+    font-size: 16px;
   }
 }
 </style>

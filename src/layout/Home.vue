@@ -103,9 +103,9 @@
         </div>
       </div>
   		<div class="connectInfo">
-  			<span>地址：上海市青浦区华丹路108号</span>
-  			<span>电话：13700275217</span>
-  			<span>邮箱：fossati1967@163.com</span>
+        <span>地址：上海市青浦区华丹路108号</span>
+        <span>电话：13700275217</span>
+        <span>邮箱：fossati1967@163.com</span>
   		</div>     
     </div>
 
@@ -348,11 +348,11 @@ export default {
 .footer{
   height: 176px;
   padding: 30px 0 50px;
-  background: #000;
-  color: #fff;
+  background: #1e1e1e;
   .linkBox{
     width: 240px;
     margin: 0 auto;
+    color: #fff;
     .iconfont{
       font-size: 30px;
     }
@@ -360,6 +360,7 @@ export default {
   .connectInfo{
     margin-top: 44px;
     text-align: center;
+    color: #eee;
     span{
       padding:0 40px;
     }
@@ -395,6 +396,7 @@ export default {
   display: inline-block;
   font-weight: 400;
   font-size: 30px;
+  border-radius: 2px;
   i{
     animation:aTop 1.3s infinite linear;
   }

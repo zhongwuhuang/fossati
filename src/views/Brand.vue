@@ -23,7 +23,7 @@
         </div>
         <p>得益于米兰城市中无数经典建筑的美学熏陶下，米兰⼈在其每日的精致生活方式中，骨子里不觉形成了对建筑、空间与家居⽆可挑剔的好品味。</p>
         <p>FOSSATI，一个拥有着纯正米兰血统的家具品牌于此诞生。</p>
-        <div style="margin-bottom:50px;">
+        <div style="margin-bottom:30px;">
           <img src="../assets/img/brand/intro4.png" alt="">
         </div>
         <div>
@@ -35,30 +35,30 @@
         <p>故事始于1967 年，毕⽣专注于家具设计事业的创始人Valter Lanzini 在意大利最大的家具制造区Lissone 成立了自己的LANZINI MOBILI 家具公司，开启了从设计到制造的全产业，这即是 FORMARREDO DUE 的前身。</p>
         <div class="flex_box_between" style="width:720px;margin:0 auto;">
           <div style="width:220px;" class="text_center">
-            <img width="100%" src="../assets/img/brand/intro6.png" alt="">
+            <img style="border-radius:40px;" height="190px" width="100%" src="../assets/img/brand/intro6.png" alt="">
             <div>创始人：Valter Lanzini</div>
           </div>
           <div style="width:220px;" class="text_center">
-            <img width="100%" src="../assets/img/brand/intro7.png" alt="">
+            <img style="border-radius:40px;" height="190px" width="100%" src="../assets/img/brand/intro7.png" alt="">
             <div>Anna</div>
           </div>
           <div style="width:220px;" class="text_center">
-            <img width="100%" src="../assets/img/brand/intro8.png" alt="">
+            <img style="border-radius:40px;" height="190px" width="100%" src="../assets/img/brand/intro8.png" alt="">
             <div>Giovanni</div>
           </div>
         </div>
         <p style="margin-top:26px;">80 年代，公司交给⼉女Giovanni 及 Anna 打理， 并正式更名为 FORMARREDO DUE。保留⼀代精神传承的同时进⾏更新，从初期的家具制造逐渐发展成了多方位的家居服务体系—360 度家居服务项目。至此，其事业迅速扩张到了遍及欧洲等全球各地，并与Giuseppe Carè等知名设计师合作至今。</p>
         <div>
           <div>
-            <img style="margin-right:30px;" src="../assets/img/brand/intro9.png" alt="">
-            <img src="../assets/img/brand/intro10.png" alt="">
+            <img height="396" style="margin-right:30px;" src="../assets/img/brand/intro9.png" alt="">
+            <img height="396" src="../assets/img/brand/intro10.png" alt="">
           </div>
           <div>摄于FORMARREDO DUE 公司</div>
         </div>
         <div>
           <div>
-            <img width="400px" style="margin-right:30px;" src="../assets/img/brand/intro11.png" alt="">
-            <img width="630px" src="../assets/img/brand/intro12.png" alt="">
+            <img height="400px" style="margin-right:30px;" src="../assets/img/brand/intro11.png" alt="">
+            <img height="400" src="../assets/img/brand/intro12.png" alt="">
           </div>
           <div>FORMARREDO DUE 家居</div>
         </div>
@@ -73,11 +73,11 @@
         <p>当我们今天再说起文化的碰撞与融合，早已不是所谓“联名”层⾯的肤浅表现。当 FOSSATI 品牌来到东⽅，即深信不疑地选择生根上海，一切都不是理所当然。</p>
         <div class="flex_box_between" style="width:820px;margin:0 auto;">
           <div style="width:360px;" class="text_center">
-            <img width="100%" src="../assets/img/brand/intro16.png" alt="">
+            <img height="536" src="../assets/img/brand/intro16.png" alt="">
             <div>Milan</div>
           </div>
           <div style="width:430px;" class="text_center">
-            <img width="100%" src="../assets/img/brand/intro17.png" alt="">
+            <img height="536" src="../assets/img/brand/intro17.png" alt="">
             <div>Shanghai</div>
           </div>
         </div>        
@@ -182,6 +182,7 @@ export default {
   text-align: center;
   img{
     margin: 30px 0;
+    border-radius: 4px;
   }
   p{
     text-align: justify;
