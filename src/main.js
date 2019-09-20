@@ -22,7 +22,7 @@ import axios from 'axios';
 Vue.prototype.$axios = axios;
 
 Vue.prototype.imgUrl = 'http://fossati1967.com:8800';
-Vue.prototype.baseUrl = process.env.NODE_ENV === 'development' ? 'ajax' : 'http://fossati1967.com:8800';
+Vue.prototype.baseUrl = process.env.NODE_ENV === 'development' ? 'ajax' : 'http://fossati1967.com:8800/api';
 
 /* 路由发生变化修改页面title */
 router.beforeEach((to, _, next) => {
