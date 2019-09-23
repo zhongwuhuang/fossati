@@ -24,7 +24,7 @@
       
       <!-- 如果需要滚动条 -->
       <!-- <div class="swiper-scrollbar"></div> -->
-      <div v-if="shows" class="next">
+      <div class="next" :style="{ zIndex: zIndex }">
         <i class="el-icon-arrow-down"></i>
       </div>
     </div>
@@ -44,8 +44,8 @@ export default {
   },  
   data() {
     return {
-      shows:true,
-      isShowF:false
+      isShowF:false,
+      zIndex:1000,
     }
   },
   mounted(){
@@ -57,6 +57,7 @@ export default {
       mousewheel: {
         releaseOnEdges: true
       },
+      observer: true,//修改swiper自己或子元素时，自动初始化swiper
       watchOverflow: true,
       pagination : {
         el:'.swiper-pagination',
@@ -66,17 +67,18 @@ export default {
       },      
       on:{
         slideChange: function(){
+          that.$parent.handleLeave()
           if (this.activeIndex !== 2){
             document.documentElement.scrollTop = document.body.scrollTop = 0;
             that.isShowF = false
           }
         },
         reachEnd: function(){// 进入最后一页执行
-          that.shows = false
+          that.zIndex = -1
           that.isShowF = true
         },
         slidePrevTransitionEnd: function(){// 离开最后一页执行
-          that.shows = true
+          that.zIndex = 1000
         }
       }
     });
@@ -106,8 +108,6 @@ export default {
         display: block;
         width: 100%;
         font-size: 30px;
-        // left: 50%;
-        // transform: translateX(-50%);
         text-align: center;
         padding: 20px 0;
         bottom: 100px;

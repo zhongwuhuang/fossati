@@ -123,7 +123,7 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-const img1 = require("../assets/img/brand/banner1.png")
+const img1 = require("../assets/img/brand/banner1.jpg")
 const img2 = require("../assets/img/brand/banner2.jpg")
 const img3 = require("../assets/img/brand/banner3.png")
  

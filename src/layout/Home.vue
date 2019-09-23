@@ -166,20 +166,19 @@ export default {
       }
     },
     toTop () {
-        const that = this
-        let timer = setInterval(() => {
-          let ispeed = Math.floor(-that.scrollTop / 5)
-          document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
-          if (that.scrollTop === 0) {
-            clearInterval(timer)
-          }
-        }, 16)
+      const that = this
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5)
+        document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
+        if (that.scrollTop === 0) {
+          clearInterval(timer)
+        }
+      }, 16)
     },
 
     windowScroll () {
       //滚动条距离页面顶部的距离
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop //原生兼容
-      // console.log(scrollTop) 
       if(scrollTop>200){
         this.isBg = 'rgba(32, 34, 43, 0.9)'
       }else{
