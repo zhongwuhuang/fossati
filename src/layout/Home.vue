@@ -50,7 +50,7 @@
       </div>
 
       <transition name="siderBar">
-        <div class="small_nav_box" v-if="isShowSmallNav">
+        <div class="small_nav_box" v-if="isSmallNavShow">
             <!-- @open="handleOpen"
             @close="handleClose" -->
           <el-menu
@@ -90,28 +90,10 @@
       <router-view></router-view>
     </div>
 
-    <div class="footer"> 
-      <div class="linkBox flex_box_between">
-        <div class="_cursor">
-          <i class="iconfont icon-weibo"></i>
-        </div>
-        <div class="_cursor">
-          <i class="iconfont icon-weixin"></i>
-        </div>
-        <div class="_cursor">
-          <i class="iconfont icon-instagram"></i>
-        </div>
-      </div>
-  		<div class="connectInfo">
-        <span>地址：上海市青浦区华丹路108号</span>
-        <span>电话：13700275217</span>
-        <span>邮箱：fossati1967@163.com</span>
-  		</div>     
-    </div>
-
+    <Footer v-if="isFooterShow"/>
 
     <transition name="siderBar">
-      <div class="toTop" v-if="btnFlag" @click="toTop">
+      <div class="toTop" v-if="isTopBtn" @click="toTop">
         <i class="el-icon-top"></i>
       </div>
     </transition>
@@ -121,28 +103,46 @@
 
 <script>
 import {filterCate} from '@/utils/utils'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'home',
   components: {
+    Footer
   },
   data() {
     return {
       smallNav:false,
-      isShowSmallNav:false,
+      isSmallNavShow:false,
       screenWidth:'',
       
       isBg:'none',
-      btnFlag:false,
+      isTopBtn:false,
 
-      cateArr:[]
+      cateArr:[],
+      isFooterShow:true
     }
   },
+  watch:{
+    $route(to){
+      if(to.path === '/index'){
+        this.isFooterShow = false
+      }else{
+        this.isFooterShow = true
+      }
+    }
+  },  
   created() {
     this.$axios.get(`${this.baseUrl}/out/category`).then(res=>{
       const data = res.data.data
       this.cateArr = data.filter(filterCate)
     })    
+    
+    if(this.$route.path === '/index'){
+      this.isFooterShow = false
+    }else{
+      this.isFooterShow = true
+    }
   },
   methods: {
     handleHover(){
@@ -153,16 +153,16 @@ export default {
     },
     handleShowSmallNav(){
       this.smallNav = !this.smallNav
-      this.isShowSmallNav = !this.isShowSmallNav
+      this.isSmallNavShow = !this.isSmallNavShow
     },
     scrollToTop () {
       const that = this
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       that.scrollTop = scrollTop
       if (that.scrollTop > 100) {
-        that.btnFlag = true
+        that.isTopBtn = true
       } else {
-        that.btnFlag = false
+        that.isTopBtn = false
       }
     },
     toTop () {
@@ -195,7 +195,7 @@ export default {
       return (() => {
         let screenWidth = document.body.clientWidth
         if(screenWidth > 768){
-          this.smallNav = this.isShowSmallNav = false
+          this.smallNav = this.isSmallNavShow = false
         }
       })()
     }
@@ -209,13 +209,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home{
-  overflow-x: hidden;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
 .header{
   position: fixed;
   top: 0;
@@ -341,32 +334,6 @@ export default {
   }
 }
 
-.content{
-  // height: 100vh;
-}
-
-.footer{
-  height: 176px;
-  padding: 30px 0 50px;
-  background: #1e1e1e;
-  .linkBox{
-    width: 240px;
-    margin: 0 auto;
-    color: #fff;
-    .iconfont{
-      font-size: 30px;
-    }
-  }
-  .connectInfo{
-    margin-top: 44px;
-    text-align: center;
-    color: #eee;
-    span{
-      padding:0 40px;
-    }
-  }
-}
-
 @keyframes aTop{
   0% {
     opacity: 0;
@@ -392,7 +359,7 @@ export default {
   height: 48px;
   line-height: 60px;
   opacity: 1;
-  z-index: 9999;
+  z-index: 999;
   display: inline-block;
   font-weight: 400;
   font-size: 30px;
