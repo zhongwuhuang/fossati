@@ -12,8 +12,8 @@
         </div>
         <div class="swiper-pagination"></div>
         <div class="button">
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
         </div>
       </div>
     </section>    
@@ -103,35 +103,34 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.swiper-slide{
+  width: auto;
+  img{
+    height: 100%;
+  }
+}
 .imgshow{
   background:#1e1e1e;
-  margin: 0px 10px;
+  // margin: 0px 10px;
   height:100vh;
   overflow: hidden;
 }
 
-/* 公共 */
-.imgshow .swiper-slide{
-  width: auto;
-}
-.swiper-slide img{
-  height: 100%;
-}
-.detailtext{
-  line-height: 30px;
-  text-indent: 2em;
-  text-align: justify;
-  color: #333;
-}
-.detailtext::first-letter{
-  font-size: 80px;
-}
-
-/* 索引 */
 .detail {
-   padding: 60px 80px 60px;
+  padding: 60px 80px 60px;
+  .detailtext{
+    line-height: 30px;
+    text-indent: 2em;
+    text-align: justify;
+    color: #333;
+    &::first-letter{
+      font-size: 80px;
+    }
+  }
 }
+</style>
+<style scoped>
 .detail >>> .swiper-pagination-bullet {
   width: 20px;
   height: 20px;
@@ -144,6 +143,9 @@ export default {
 }
 .detail >>> .swiper-pagination-bullet-active {
   color:#fff;
-  background: #007aff;
+  background: rgba(32, 34, 43, 0.9);
+}
+.imgshow >>> .swiper-pagination-bullet-active {
+  background: #fff;
 }
 </style>

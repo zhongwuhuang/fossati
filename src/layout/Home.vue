@@ -136,7 +136,7 @@ export default {
     this.$axios.get(`${this.baseUrl}/out/category`).then(res=>{
       const data = res.data.data
       this.cateArr = data.filter(filterCate)
-    })    
+    })
     
     if(this.$route.path === '/index'){
       this.isFooterShow = false
@@ -200,6 +200,15 @@ export default {
     }
 
     window.addEventListener('scroll', this.windowScroll)      
+
+    //监听键盘按键事件
+    let self = this;
+    this.$nextTick(() => {
+      document.addEventListener('keyup', (e) => {
+        //此处填写你的业务逻辑即可
+        e.keyCode === 27 && self.$imgVuer.close()
+      })
+    })    
   },  
   destroyed () {
     window.removeEventListener('scroll', this.scrollToTop)

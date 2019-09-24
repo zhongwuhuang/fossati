@@ -11,8 +11,8 @@
           </div>
           <div class="swiper-pagination"></div>
           <div class="button">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
           </div>
         </div>
       </section>
@@ -97,73 +97,12 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+@import "@/style/list.scss";
+</style>
+
 <style scoped>
-		/* 公共 */
-		.pc-banner .swiper-slide{
-			width: auto;
-		}
-		.swiper-slide img{
-			height: 100%;
-		}
-
-		.project{
-			margin-bottom:20px;
-			border-bottom: 1px solid #d9d9d9;
-		}
-		.project:last-child{
-			border-bottom: none;
-		}
-		.project .pc-banner{
-			background:#1e1e1e;height:700px;margin: 0px 10px;overflow: hidden;
-		}
-		.project .detail{
-			padding: 50px 80px;
-			overflow: hidden;
-		}
-		.projectTitle{
-			margin-top:60px;
-			font-size: 50px;
-			text-align: center;
-		}
-
-		.detail >>> .detailtext{
-			line-height: 30px;
-			text-indent: 2em;
-			text-align: justify;
-      color: #333;
-		}
-		.detail >>> .detailtext::first-letter{
-			font-size: 80px;
-		}
-
-		.info {
-			margin-top: 18px;
-      color: #666;
-		}
-		.info li{
-			list-style: none;
-			line-height: 40px;
-			overflow: hidden;
-			font-size: 18px;
-		}
-		.info div{
-			width: 50%;
-			float: left;
-    }  
-    
-    /* 索引 */
-		.detail .swiper-pagination-bullet {
-			width: 20px;
-			height: 20px;
-			text-align: center;
-			line-height: 20px;
-			font-size: 12px;
-			color:#000;
-			opacity: 1;
-			background: rgba(0,0,0,0.2);
-		}
-		.detail .swiper-pagination-bullet-active {
-			color:#fff;
-			background: #007aff;
-		}
+.project >>> .swiper-pagination-bullet-active {
+  background: #fff;
+}
 </style>
