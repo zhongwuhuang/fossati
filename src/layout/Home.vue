@@ -221,7 +221,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 100000;
   height: 70px;
   color: #fff;
   transition:all .5s ease 0s;
