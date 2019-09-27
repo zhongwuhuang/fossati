@@ -36,9 +36,9 @@
             <li class="nav_list">
               <span class="nav_list_a _cursor"><router-link to="/nProduct">新品</router-link></span>
             </li>
-            <li class="nav_list">
+            <!-- <li class="nav_list">
               <span class="nav_list_a _cursor"><router-link to="/project">项目</router-link></span>
-            </li>
+            </li> -->
             <li class="nav_list">
               <span class="nav_list_a _cursor"><router-link to="/shop">旗舰店</router-link></span>
             </li>
@@ -71,9 +71,9 @@
               <el-menu-item index="3">
                 <router-link @click.native="handleShowSmallNav" to="/nProduct">新品</router-link>
               </el-menu-item>
-              <el-menu-item index="4">
+              <!-- <el-menu-item index="4">
                 <router-link @click.native="handleShowSmallNav" to="/project">项目</router-link>
-              </el-menu-item>
+              </el-menu-item> -->
               <el-menu-item index="5">
                 <router-link @click.native="handleShowSmallNav" to="/shop">旗舰店</router-link>
               </el-menu-item>
@@ -221,7 +221,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100000;
+  z-index: 100;
   height: 70px;
   color: #fff;
   transition:all .5s ease 0s;

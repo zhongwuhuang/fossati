@@ -21,6 +21,13 @@
       </div>
       <div class="detail">
         <el-row>
+          <el-col :span="24">
+            <p class="detailtext" v-html="item.content">
+              {{item.content}}
+            </p>
+          </el-col>
+        </el-row>
+        <!-- <el-row>
           <el-col :span="24" :sm="{span:12}">
             <p class="detailtext" v-html="item.content">
               {{item.content}}
@@ -42,7 +49,7 @@
               </li>
             </ul>
           </el-col>
-        </el-row>
+        </el-row> -->
       </div>
     </div>
   </div>

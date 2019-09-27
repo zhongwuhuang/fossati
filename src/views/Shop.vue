@@ -32,10 +32,10 @@
                 <div>地址</div>
                 <div>{{item.address}}</div>
               </li>
-              <li>
+              <!-- <li>
                 <div>店主</div>
                 <div>{{item.shopkeeper}}</div>
-              </li>
+              </li> -->
               <li>
                 <div>电话</div>
                 <div>{{item.phone}}</div>
