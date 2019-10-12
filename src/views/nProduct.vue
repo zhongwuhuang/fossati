@@ -9,21 +9,23 @@
     <div class="list" id="list">
       <div class="container-fluid">
         <div id="newList" style="margin-bottom:20px;">
-          <div class="category" v-for="(name,index) in newListName" :key="index">
-            <h3 class="tittle">{{name}}</h3>
-            <el-row>
-              <el-col class="imgbox" :span="12" :xs="24" :md="8" v-for="(list,idx) in newListArr[index]" :key="idx">
-                <router-link :to="'/detail?productId='+list.id">
-                  <div class="imgdiv">
-                    <img  class="img-responsive" :src="baseImgUrl+list.image" alt="chef">
-                  </div>
-                </router-link>
-                <h3>{{list.name}}</h3>
-              </el-col>
-              <div class="noPro" v-if="newListArr[index].length === 0">
-                该分类没有新品，请添加
-              </div>
-            </el-row>
+          <div class="category_box" v-for="(name,index) in newListName" :key="index">
+            <div class="category" v-if="newListArr[index].length != 0">
+              <h3 class="tittle">{{name}}</h3>
+              <el-row>
+                <el-col class="imgbox" :span="12" :xs="24" :md="8" v-for="(list,idx) in newListArr[index]" :key="idx">
+                  <router-link :to="'/detail?productId='+list.id">
+                    <div class="imgdiv">
+                      <img  class="img-responsive" :src="baseImgUrl+list.image" alt="chef">
+                    </div>
+                  </router-link>
+                  <h3>{{list.name}}</h3>
+                </el-col>
+                <div class="noPro" v-if="newListArr[index].length === 0">
+                  该分类没有新品，请添加
+                </div>
+              </el-row>
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +56,7 @@ export default {
         //   return item.pid === 28
         // }
         let cateArr = resCate.filter(filterCate)
-        this.cateImg = this.imgUrl+cateArr[0].image
+        // this.cateImg = this.imgUrl+cateArr[0].image
         let cateIdArr = []
         for (let i = 0; i < cateArr.length; i++) {
           cateIdArr.push(cateArr[i].id)
@@ -64,6 +66,7 @@ export default {
           this.newListArr = []
           this.newListName = []
           let resnews = res.data.data
+          this.cateImg = this.imgUrl+resnews[0].image
           for (let i = 0; i < cateIdArr.length; i++) {
             const filterCateF = (item)=>{
               return item.category_id == cateIdArr[i]
@@ -92,57 +95,62 @@ export default {
   overflow: hidden;
   img{
     width: 100%;
+    height: 100%;
   }
 }
 
 .list{
   text-align:center;
   margin:0px 60px 0;
-  .category{
-    margin-top: 30px;
-    overflow: hidden;
-    border-bottom: 1px solid #d9d9d9;
-    &:last-child{
+  .category_box{
+    &:last-child .category{
       border-bottom: none;
     }
-    .tittle{
-      font-size: 30px;
-      font-weight: 300;
-      padding: 20px 0;
-    }
-    .imgbox{
-      margin:40px 0 20px;
-      a{
-        overflow: hidden;
-        position: relative;
-        display: block;
-        height: 240px;
-        .imgdiv{
+    .category{
+      margin-top: 30px;
+      overflow: hidden;
+      border-bottom: 1px solid #d9d9d9;
+      .tittle{
+        font-size: 30px;
+        font-weight: 300;
+        padding: 20px 0;
+      }
+      .imgbox{
+        margin:40px 0 20px;
+        padding: 0 15px;
+        a{
           overflow: hidden;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          display: inline-block;
-          img{
-            max-height: 100%;
-            // max-width: 100%;
-            transition: all 1.5s;
-            &:hover {
-              transform: scale(1.1);
-            }        
+          position: relative;
+          display: block;
+          height: 240px;
+          .imgdiv{
+            width: 80%;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: inline-block;
+            img{
+              max-height: 100%;
+              width: 100%;
+              transition: all 1.5s;
+              &:hover {
+                transform: scale(1.1);
+              }        
+            }
           }
         }
+        h3{
+          padding-top:30px;
+          color: #333;
+        }
       }
-      h3{
-        padding-top:20px;
-        color: #333;
+      .noPro{
+        padding-bottom: 30px;
+        color: #666;
+        font-size: 16px;
       }
-    }
-    .noPro{
-      padding-bottom: 30px;
-      color: #666;
-      font-size: 16px;
     }
   }
 }

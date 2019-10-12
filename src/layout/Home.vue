@@ -284,6 +284,7 @@ export default {
             background: rgba(32, 34, 43, 0.9);
             height: 0;
             opacity: 0;
+            padding:40px 0 40px;
             overflow: hidden;
             transition:all .5s ease .3s;
             ._border{
@@ -297,25 +298,26 @@ export default {
               transition:all .5s ease .3s;
             }
             .nav_sub_list{
-              height: 122px;
+              display: flex;
+              // flex-direction: column;
+              // flex-wrap: wrap;
+              // 等同于上面的简写
+              flex-flow: column wrap;
+              height: 120px;
               line-height: 1;
-              // column-count:6;
-              column-gap:50px;          
-              // border: 1px solid #fff;
               width: 800px;    
               overflow: hidden;
               .item{
                 display: inline-block;
-                width: 33.3%;
                 line-height: 30px;
-                cursor: pointer;
+                // cursor: pointer;
               }
             }
           }
           &:hover .nav_sub_box{
             padding:40px 0 50px;
             opacity: 1;
-            height: 212px;            
+            height: 200px;            
             ._border{
               opacity: 1;
             }

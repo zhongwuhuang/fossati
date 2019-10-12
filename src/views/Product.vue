@@ -82,6 +82,7 @@ export default {
   overflow: hidden;
   img{
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -93,17 +94,19 @@ export default {
     font-weight: 300;
   }
   h3{
-    padding-top:20px;
+    padding-top:30px;
     color: #333;
   }
   .imgbox{
     margin-top:40px;
+    padding: 0 15px;
     a{
       overflow: hidden;
       position: relative;
       display: block;
       height: 240px;
       .imgdiv{
+        width: 80%;
         overflow: hidden;
         position: absolute;
         top: 50%;
@@ -113,6 +116,7 @@ export default {
         img{
           max-height: 100%;
           transition: all 1.5s;
+          width: 100%;
           &:hover {
             transform: scale(1.1);
           }        

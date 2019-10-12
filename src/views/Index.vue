@@ -8,7 +8,7 @@
         </div>
         <div class="swiper-slide">
           <img width="100%" height="100%" src="../assets/img/index/index2.jpg" alt="">
-          <router-link to="/project">项目</router-link>
+          <router-link to="/nProduct">新品</router-link>
         </div>
         <div class="swiper-slide">
           <img width="100%" height="100%" src="../assets/img/index/index3.jpg" alt="">
